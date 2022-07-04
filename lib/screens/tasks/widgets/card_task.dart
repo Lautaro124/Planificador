@@ -3,12 +3,13 @@ import 'package:planificador/assets/themes/colors/colors.dart';
 import 'package:planificador/widgets/texts/primary_text.dart';
 
 class TaskCard extends StatelessWidget {
-  final String name, description, userReferece;
+  final String name;
+  final String? description, userReferece;
   const TaskCard({
     Key? key,
     required this.name,
-    required this.description,
-    required this.userReferece,
+    this.description,
+    this.userReferece,
   }) : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class TaskCard extends StatelessWidget {
               child: TextPrimary(name),
             ),
           ),
-          TextPrimary(description),
+          TextPrimary(description ?? ''),
         ],
       ),
     );

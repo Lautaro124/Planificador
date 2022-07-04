@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planificador/assets/enums/navigation.dart';
+import 'package:planificador/blocs/project_bloc/project_bloc.dart';
 import 'package:planificador/blocs/team_bloc/team_bloc.dart';
 import 'package:planificador/blocs/user/user_bloc.dart';
 import 'package:planificador/screens/dashboard/dashboard.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => UserBloc()),
         BlocProvider(create: (_) => TeamBloc()),
+        BlocProvider(create: (_) => ProjectBloc())
       ],
       child: MaterialApp(
         title: 'Planificador Demo',

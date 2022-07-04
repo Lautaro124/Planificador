@@ -30,7 +30,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
           crossAxisSpacing: marginWidgets,
           children: [
             ...state.projects.map(
-              (Project project) => CardCustom(title: project.name),
+              (Project project) => CardCustom(project: project),
             ),
             addCart(context, onPress: changeView),
           ],

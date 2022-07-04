@@ -4,8 +4,8 @@ import 'package:planificador/assets/themes/colors/colors.dart';
 import 'package:planificador/blocs/team_bloc/team_bloc.dart';
 import 'package:planificador/models/project/project.dart';
 import 'package:planificador/models/validations/input_validation.dart';
-import 'package:planificador/screens/projects/utils/constants.dart';
 import 'package:planificador/screens/projects/utils/empty_detector.dart';
+import 'package:planificador/screens/projects/utils/texts.dart';
 import 'package:planificador/screens/projects/utils/varables.dart';
 import 'package:planificador/screens/projects/widgets/card.dart';
 import 'package:planificador/widgets/texts/primary_text.dart';
@@ -23,7 +23,7 @@ Widget addCart(BuildContext context, {required Function onPress}) {
 
   return !addingNewProject
       ? CardCustom(
-          title: addText,
+          project: Project(name: addText),
           onPress: onPress,
         )
       : ClipRRect(
@@ -38,7 +38,7 @@ Widget addCart(BuildContext context, {required Function onPress}) {
                 children: [
                   TextFormField(
                     decoration: const InputDecoration(
-                      label: TextPrimary('Ingrese nombre de projecto'),
+                      label: TextPrimary(setProjectName),
                     ),
                     onChanged: (String value) => nameNewProject = value,
                     validator: (String? value) =>
