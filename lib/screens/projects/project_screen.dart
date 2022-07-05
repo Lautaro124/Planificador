@@ -23,18 +23,20 @@ class _ProjectScreenState extends State<ProjectScreen> {
       context,
       place: NavigationRoutes.projects.placeTitle,
       child: BlocBuilder<TeamBloc, TeamState>(
-        builder: (BuildContext context, TeamState state) => GridView.count(
-          padding: EdgeInsets.all(paddingAll),
-          crossAxisCount: columsGrid,
-          mainAxisSpacing: marginWidgets,
-          crossAxisSpacing: marginWidgets,
-          children: [
-            ...state.projects.map(
-              (Project project) => CardCustom(project: project),
-            ),
-            addCart(context, onPress: changeView),
-          ],
-        ),
+        builder: (BuildContext context, TeamState state) {
+          return GridView.count(
+            padding: EdgeInsets.all(paddingAll),
+            crossAxisCount: columsGrid,
+            mainAxisSpacing: marginWidgets,
+            crossAxisSpacing: marginWidgets,
+            children: [
+              ...state.projects.map(
+                (Project project) => CardCustom(project: project),
+              ),
+              addCart(context, onPress: changeView),
+            ],
+          );
+        },
       ),
     );
   }

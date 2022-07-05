@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planificador/blocs/project_bloc/project_bloc.dart';
@@ -10,7 +12,6 @@ import 'package:planificador/widgets/screen_generator/scafolt_generator.dart';
 
 class Tasks extends StatelessWidget {
   const Tasks({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final TeamBloc teamBloc = BlocProvider.of<TeamBloc>(context, listen: false);
@@ -23,6 +24,7 @@ class Tasks extends StatelessWidget {
           builder: (BuildContext context, ProjectState state) {
             teamBloc.add(ChangeProject(state.project));
 
+            log(state.project.name);
             return gridTables(
               tables: state.project.tasks
                   .map(

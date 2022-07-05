@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:planificador/assets/themes/colors/colors.dart';
 import 'package:planificador/widgets/texts/primary_text.dart';
 
 class TaskCard extends StatelessWidget {
@@ -14,18 +13,17 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        children: [
-          Container(
-            color: red,
-            child: Center(
-              child: TextPrimary(name),
-            ),
+    return ListBody(
+      children: [
+        ListTile(
+          trailing: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
           ),
-          TextPrimary(description ?? ''),
-        ],
-      ),
+          title: TextPrimary(name),
+          subtitle: TextPrimary(description ?? 'No hay descripciòn'),
+        ),
+      ],
     );
   }
 }

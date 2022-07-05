@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planificador/assets/enums/navigation.dart';
@@ -22,6 +24,7 @@ class CardCustom extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPress == null
             ? () {
+                log(project.name);
                 projectBloc.add(SelectProject(project));
                 Navigator.pushNamed(context, NavigationRoutes.tasks.name);
               }
