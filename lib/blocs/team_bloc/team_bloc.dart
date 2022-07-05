@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:planificador/models/project/project.dart';
@@ -31,5 +33,11 @@ class TeamBloc extends Bloc<TeamEvent, TeamState> {
 
       emit(TeamSetState(sameTeam: state.team, newproject: newProjects));
     });
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    log('Error: $error, Trace: $stackTrace');
+    super.onError(error, stackTrace);
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -14,9 +15,7 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
   ProjectBloc() : super(ProjectInitial());
 
   @override
-  Stream<ProjectState> mapEventToState(
-    ProjectEvent event,
-  ) async* {
+  Stream<ProjectState> mapEventToState(ProjectEvent event) async* {
     on<SelectProject>((SelectProject event, Emitter<ProjectState> emit) => emit(
         ProjectSetState(
             newName: event.newProject.name, newTasks: event.newProject.tasks)));
@@ -34,5 +33,11 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
             return table;
           }).toList()));
     });
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    log('Error: $error, Trace: $stackTrace');
+    super.onError(error, stackTrace);
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planificador/assets/themes/colors/colors.dart';
 import 'package:planificador/blocs/project_bloc/project_bloc.dart';
 import 'package:planificador/models/task/task.dart';
+import 'package:planificador/screens/tasks/utils/texts.dart';
 import 'package:planificador/screens/tasks/widgets/text_flied.dart';
 import 'package:planificador/widgets/dialog_generator/dialog_generator.dart';
 import 'package:planificador/widgets/texts/primary_text.dart';
@@ -16,7 +17,7 @@ void showSimpleDialog(BuildContext context,
 
   dialogGenerator(
     context,
-    title: 'Crear tarea',
+    title: createTask,
     children: [
       Form(
         key: fomController,
@@ -25,14 +26,14 @@ void showSimpleDialog(BuildContext context,
           child: Column(
             children: [
               FieldFormCustorm(
-                label: 'Ingrese el nombre de la tarea',
+                label: putTaskName,
                 onChange: (String value) {
                   nameTask = value;
                 },
                 textArea: false,
               ),
               FieldFormCustorm(
-                label: 'Ingrese la descripcion',
+                label: putDescription,
                 onChange: (String value) {
                   descriptionTask = value;
                 },
@@ -51,15 +52,16 @@ void showSimpleDialog(BuildContext context,
                       tableName: tableName,
                     ),
                   );
+                  Navigator.pop(context);
                 },
-                child: const TextPrimary('Crear'),
+                child: const TextPrimary(create),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: red,
                 ),
                 onPressed: () => Navigator.pop(context),
-                child: const TextPrimary('Cancelar'),
+                child: const TextPrimary(cancel),
               ),
             ],
           ),

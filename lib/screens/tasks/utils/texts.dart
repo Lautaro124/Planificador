@@ -1,4 +1,9 @@
 const String init = 'Iniciado',
     bloqued = 'Bloqueado',
     pending = 'Pendiete',
-    finish = 'Terminado';
+    finish = 'Terminado',
+    create = 'Crear',
+    cancel = 'Cancelar',
+    createTask = 'Crear tarea',
+    putTaskName = 'Ingrese el nombre de la tarea',
+    putDescription = 'Ingrese la descripcion';
