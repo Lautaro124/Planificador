@@ -17,22 +17,23 @@ class Tasks extends StatelessWidget {
     return generateScreen(
       context,
       child: BlocBuilder<ProjectBloc, ProjectState>(
-          buildWhen: (ProjectState previous, ProjectState current) =>
-              canRebuild(previous, current),
-          builder: (BuildContext context, ProjectState state) {
-            teamBloc.add(ChangeProject(state.project));
+        buildWhen: (ProjectState previous, ProjectState current) =>
+            canRebuild(previous, current),
+        builder: (BuildContext context, ProjectState state) {
+          teamBloc.add(ChangeProject(state.project));
 
-            return gridTables(
-              tables: state.project.tasks
-                  .map(
-                    (Map<String, List<Task>> tableData) => table(
-                      stateName: tableData.keys.first,
-                      tasks: tableData.values.first,
-                    ),
-                  )
-                  .toList(),
-            );
-          }),
+          return gridTables(
+            tables: state.project.tasks
+                .map(
+                  (Map<String, List<Task>> tableData) => table(
+                    stateName: tableData.keys.first,
+                    tasks: tableData.values.first,
+                  ),
+                )
+                .toList(),
+          );
+        },
+      ),
     );
   }
 }
