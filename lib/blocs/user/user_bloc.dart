@@ -15,7 +15,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   @override
   void onError(Object error, StackTrace stackTrace) {
-    log('Error: $error, Trace: $stackTrace');
+    log('Error: $error ');
+    log('Trace: $stackTrace');
     super.onError(error, stackTrace);
   }
 }

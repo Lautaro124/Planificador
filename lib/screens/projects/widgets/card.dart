@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planificador/assets/enums/navigation.dart';
 import 'package:planificador/blocs/project_bloc/project_bloc.dart';
 import 'package:planificador/models/project/project.dart';
 import 'package:planificador/screens/projects/utils/texts.dart';
@@ -22,6 +23,7 @@ class CardCustom extends StatelessWidget {
         onPressed: onPress == null
             ? () {
                 projectBloc.add(SelectProject(project));
+                Navigator.pushNamed(context, NavigationRoutes.tasks.name);
               }
             : () {
                 onPress!();
