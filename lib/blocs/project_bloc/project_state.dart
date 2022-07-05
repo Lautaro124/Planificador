@@ -11,10 +11,11 @@ class ProjectInitial extends ProjectState {
   ProjectInitial()
       : super(
           Project(
-              name: 'dev',
-              tasks: ProjectStates.values
-                  .map((ProjectStates states) => {states.name: <Task>[]})
-                  .toList()),
+            name: '',
+            tasks: ProjectStates.values
+                .map((ProjectStates states) => {states.name: <Task>[]})
+                .toList(),
+          ),
         );
 }
 
