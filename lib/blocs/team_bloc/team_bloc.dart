@@ -7,7 +7,7 @@ part 'team_state.dart';
 
 class TeamBloc extends Bloc<TeamEvent, TeamState> {
   TeamBloc() : super(TeamInitial()) {
-    on<AddNewTeam>((AddNewTeam event, Emitter<TeamState> emit) {
+    on<AddNewProject>((AddNewProject event, Emitter<TeamState> emit) {
       if (state.team.isEmpty) return;
 
       emit(
@@ -19,6 +19,17 @@ class TeamBloc extends Bloc<TeamEvent, TeamState> {
           ],
         ),
       );
+    });
+
+    on<ChangeProject>((ChangeProject event, Emitter<TeamState> emit) {
+      List<Project> newProjects = state.projects.map((Project project) {
+        if (project.name == event.newProject.name) {
+          return event.newProject;
+        }
+        return project;
+      }).toList();
+
+      emit(TeamSetState(sameTeam: state.team, newproject: newProjects));
     });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:planificador/models/validations/input_validation.dart';
+import 'package:planificador/screens/tasks/utils/contants.dart';
 import 'package:planificador/widgets/texts/primary_text.dart';
 
 class FieldFormCustorm extends StatelessWidget {
@@ -17,17 +18,13 @@ class FieldFormCustorm extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      onChanged: (String value) => onChange(value),
       decoration: InputDecoration(
         label: TextPrimary(label),
       ),
+      onChanged: (String value) => onChange(value),
+      maxLines: textArea ? maxTextAreaLines : maxTextInputLines,
+      validator: (String? value) => InputValidation(value).empty(),
       keyboardType: textArea ? TextInputType.multiline : TextInputType.text,
-      validator: (String? value) {
-        String? isEmpty = InputValidation(value).empty();
-        if (isEmpty != null) return isEmpty;
-
-        return null;
-      },
     );
   }
 }

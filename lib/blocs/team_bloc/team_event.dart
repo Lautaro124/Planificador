@@ -3,8 +3,14 @@ part of 'team_bloc.dart';
 @immutable
 abstract class TeamEvent {}
 
-class AddNewTeam extends TeamEvent {
+class AddNewProject extends TeamEvent {
   final Project newProject;
 
-  AddNewTeam({required this.newProject});
+  AddNewProject({required this.newProject});
+}
+
+class ChangeProject extends TeamEvent {
+  final Project newProject;
+
+  ChangeProject(this.newProject);
 }

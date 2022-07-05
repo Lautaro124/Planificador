@@ -17,7 +17,7 @@ Widget table({required String stateName, required List<Task> tasks}) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ...tasks.map((Task task) => TaskCard(name: task.title)),
-            const CardAddTask(),
+            CardAddTask(tableName: stateName, tasks: tasks),
           ],
         ),
       ],

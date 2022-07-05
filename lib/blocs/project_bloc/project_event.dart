@@ -8,3 +8,10 @@ class SelectProject extends ProjectEvent {
 
   SelectProject(this.newProject);
 }
+
+class AddTaskToProject extends ProjectEvent {
+  final String tableName;
+  final List<Task> newTasks;
+
+  AddTaskToProject({required this.tableName, required this.newTasks});
+}

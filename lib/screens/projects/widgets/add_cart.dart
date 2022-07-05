@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:planificador/assets/constants/empty_list_task.dart';
 import 'package:planificador/assets/themes/colors/colors.dart';
 import 'package:planificador/blocs/team_bloc/team_bloc.dart';
 import 'package:planificador/models/project/project.dart';
@@ -16,14 +17,15 @@ Widget addCart(BuildContext context, {required Function onPress}) {
   void _addNewEvent() {
     detectEmptyValue(context, nameNewProject);
 
-    teamBloc.add(AddNewTeam(newProject: Project(name: nameNewProject)));
+    teamBloc.add(AddNewProject(
+        newProject: Project(name: nameNewProject, tasks: emptyTaskValue)));
     onPress();
     nameNewProject = '';
   }
 
   return !addingNewProject
       ? CardCustom(
-          project: Project(name: addText),
+          project: Project(name: addText, tasks: emptyTaskValue),
           onPress: onPress,
         )
       : ClipRRect(
